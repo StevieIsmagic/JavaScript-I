@@ -90,6 +90,15 @@ const flatten = (elements) => {
   return elements;
 };
 
+/* FLATTEN SOLUTION
+while (elements.find(value => Array.isArray(value))) {
+  elements = Array.prototype.concat(...elements);
+}
+return elements;
+}
+
+*/
+
 /* eslint-enable no-unused-vars, max-len */
 
 module.exports = {
