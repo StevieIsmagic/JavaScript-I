@@ -22,7 +22,7 @@ const mapObject = (obj, cb) => {
   for (let i = 0; i < arr.length; i++) {
     arr[i] = cb(arr[i]);
   }
-  console.log(Object.assign({}, arr));
+  // console.log(Object.assign({}, arr));
 };
 
 const pairs = (obj) => {
@@ -37,6 +37,20 @@ const invert = (obj) => {
   // Returns a copy of the object where the keys have become the values and the values the keys.
   // Assume that all of the object's values will be unique and string serializable.
   // http://underscorejs.org/#invert
+  const entries = Array.from(Object.entries(obj));
+
+  console.log('before', entries);
+
+  const final = [];
+  // why won't this pass second test ?
+  for (let i = 0; i < entries.length; i++) {
+    final.push(
+      ([entries[i][0], entries[i][1]] = [entries[i][1], entries[i][0]])
+    );
+  }
+
+  console.log('after', final);
+  return Object.create(final);
 };
 
 const defaults = (obj, defaultProps) => {
